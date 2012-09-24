@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="PasswordHistory">
+  <field name="ID" type="I">
+  <key ></key><AUTOINCREMENT></AUTOINCREMENT>
+  </field>
+  <field name="userID" type="C" size="64">
+  </field>
+  <field name="password" type="C" size="64">
+  </field>
+  <field name="updated" type="T">
+  </field>
+  <field name="username" type="C" size="64">
+  </field>
+  <field name="userEmail" type="C" size="64">
+  </field>
+  <field name="attempts" type="I"><NOTNULL></NOTNULL>
+  </field>
+  </table>
+</schema>
