@@ -118,8 +118,8 @@ class PasswordPolicy
 		$this->rules['min_nonalphanumeric_chars'] = array(
 			'value' => false,
 			'type'  => 'integer',
-			'test'  => 'return preg_match_all("/[\W]/",$p,$x)>=$v;',
-			'error' => 'Password must contain at least #VALUE# non-aplhanumeric characters');
+			'test'  => 'return preg_match_all("/[\w]/",$p,$x)>=$v;',
+			'error' => 'Password must contain at least #VALUE# non-alphanumeric characters');
 			
 		$this->rules['max_nonalphanumeric_chars'] = array(
 			'value' => false,
