@@ -35,103 +35,103 @@ class PasswordPolicy
 			'value' => false,
 			'type'  => 'integer',
 			'test'  => 'return strlen($p)>=$v;',
-			'error' => 'Password must be more than #VALUE# characters long');
+			'error' => 'Password must be at least #VALUE# characters long.');
 			
 		$this->rules['max_length'] = array(
 			'value' => false,
 			'type'  => 'integer',
 			'test'  => 'return (strlen($p)<=$v);',
-			'error' => 'Password must be less than #VALUE# characters long');
+			'error' => 'Password must be less than #VALUE# characters long.');
 			
 		$this->rules['min_lowercase_chars'] = array(
 			'value' => false,
 			'type'  => 'integer',
 			'test'  => 'return preg_match_all("/[a-z]/",$p,$x)>=$v;',
-			'error' => 'Password must contain at least #VALUE# lowercase characters');
+			'error' => 'Password must contain at least #VALUE# lowercase characters.');
 			
 		$this->rules['max_lowercase_chars'] = array(
 			'value' => false,
 			'type'  => 'integer',
 			'test'  => 'return preg_match_all("/[a-z]/",$p,$x)<=$v;',
-			'error' => 'Password must contain no more than #VALUE# lowercase characters');
+			'error' => 'Password must contain no more than #VALUE# lowercase characters.');
 			
 		$this->rules['min_uppercase_chars'] = array(
 			'value' => false,
 			'type'  => 'integer',
 			'test'  => 'return preg_match_all("/[A-Z]/",$p,$x)>=$v;',
-			'error' => 'Password must contain at least #VALUE# uppercase characters');
+			'error' => 'Password must contain at least #VALUE# uppercase characters.');
 			
 		$this->rules['max_uppercase_chars'] = array(
 			'value' => false,
 			'type'  => 'integer',
 			'test'  => 'return preg_match_all("/[A-Z]/",$p,$x)<=$v;',
-			'error' => 'Password must contain no more than #VALUE# uppercase characters');
+			'error' => 'Password must contain no more than #VALUE# uppercase characters.');
 			
 		$this->rules['disallow_numeric_chars'] = array(
 			'value' => false,
 			'type'  => 'boolean',
 			'test'  => 'return preg_match_all("/[0-9]/",$p,$x)==0;',
-			'error' => 'Password may not contain numbers');
+			'error' => 'Password cannot any contain numbers.');
 			
 		$this->rules['disallow_numeric_first'] = array(
 			'value' => false,
 			'type'  => 'boolean',
 			'test'  => 'return preg_match_all("/^[0-9]/",$p,$x)==0;',
-			'error' => 'First character cannot be numeric');
+			'error' => 'First character cannot be a number.');
 			
 		$this->rules['disallow_numeric_last'] = array(
 			'value' => false,
 			'type'  => 'boolean',
 			'test'  => 'return preg_match_all("/[0-9]$/",$p,$x)==0;',
-			'error' => 'Last character cannot be numeric');
+			'error' => 'Last character cannot be a number.');
 			
 		$this->rules['min_numeric_chars'] = array(
 			'value' => false,
 			'type'  => 'integer',
 			'test'  => 'return preg_match_all("/[0-9]/",$p,$x)>=$v;',
-			'error' => 'Password must contain at least #VALUE# numbers');
+			'error' => 'Password must contain at least #VALUE# numbers.');
 			
 		$this->rules['max_numeric_chars'] = array(
 			'value' => false,
 			'type'  => 'integer',
 			'test'  => 'return preg_match_all("/[0-9]/",$p,$x)<=$v;',
-			'error' => 'Password must contain no more than #VALUE# numbers');
+			'error' => 'Password must contain no more than #VALUE# numbers.');
 		
 		$this->rules['disallow_nonalphanumeric_chars'] = array(
 			'value' => false,
 			'type'  => 'boolean',
 			'test'  => 'return preg_match_all("/[\W]/",$p,$x)==0;',
-			'error' => 'Password may not contain non-alphanumeric characters');
+			'error' => 'Password may not contain non-alphanumeric characters.');
 			
 		$this->rules['disallow_nonalphanumeric_first'] = array(
 			'value' => false,
 			'type'  => 'boolean',
 			'test'  => 'return preg_match_all("/^[\W]/",$p,$x)==0;',
-			'error' => 'First character cannot be non-alphanumeric');
+			'error' => 'First character cannot be a non-alphanumeric character.');
 			
 		$this->rules['disallow_nonalphanumeric_last'] = array(
 			'value' => false,
 			'type'  => 'boolean',
 			'test'  => 'return preg_match_all("/[\W]$/",$p,$x)==0;',
-			'error' => 'Last character cannot be non-alphanumeric');
+			'error' => 'Last character cannot be a non-alphanumeric character.');
 			
 		$this->rules['min_nonalphanumeric_chars'] = array(
 			'value' => false,
 			'type'  => 'integer',
 			'test'  => 'return preg_match_all("/[\W_]/",$p,$x)>=$v;',
-			'error' => 'Password must contain at least #VALUE# non-alphanumeric characters');
+			'error' => 'Password must contain at least #VALUE# non-alphanumeric characters.');
 			
 		$this->rules['max_nonalphanumeric_chars'] = array(
 			'value' => false,
 			'type'  => 'integer',
 			'test'  => 'return preg_match_all("/[\W]/",$p,$x)<=$v;',
-			'error' => 'Password must contain no more than #VALUE# non-alphanumeric characters');
+			'error' => 'Password must contain no more than #VALUE# non-alphanumeric characters.');
 
 		$this->rules['disallow_consecutive_chars'] = array(
 			'value' => false,
 			'type'  => 'integer',
 			'test'  => 'return preg_match_all("/^[\w ]*$/",$p,$x)==0;',
-			'error' => 'Password must contain not more than #VALUE# consecutive characters');
+			'error' => 'Password must contain not more than #VALUE# consecutive characters from the username.');
 		
 		 // Apply params from constructor array
 		foreach( $params as $k=>$v ) { $this->$k = $v; }
@@ -263,7 +263,7 @@ class PasswordPolicy
 			//preg_match the matched string with the password
 			if(preg_match('/'.$matchString.'/',$password)){
 				//adds an error to the error list
-				$e->add( t('Password cannot contain more than '.$minConsecutiveCharacter.' consecutive characters from username'));
+				$e->add( t('Password cannot contain more than '.$minConsecutiveCharacter.' consecutive characters from your username.'));
 				return false;
 			}
 		}
