@@ -179,7 +179,8 @@ class LoginController extends Controller {
 							$data = PasswordPolicy::getAttempts($this->post('uName'));
 							$count = $data['attempts'];
 							$userID = $data['userID'];
-							if($count != NULL){
+							$ui = UserInfo::getByID($userID);
+							if(($count != NULL) && ($ui->isActive()!=0)){
 								if($count >$passwordLoginAttempt){
 									throw new Exception(t('This user is inactive. Please contact us regarding this account.'));
 									$count=0;
@@ -201,7 +202,8 @@ class LoginController extends Controller {
 							$data = PasswordPolicy::getAttempts($this->post('uName'));
 							$count = $data['attempts'];
 							$userID = $data['userID'];
-							if($count != NULL){
+							$ui = UserInfo::getByID($userID);
+							if(($count != NULL) && ($ui->isActive()!=0)){
 								if($count >$passwordLoginAttempt){
 
 									$count=0;
