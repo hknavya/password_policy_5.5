@@ -246,6 +246,9 @@ class LoginController extends Controller {
 				$loginData['success']=1;
 				$loginData['msg']=t('Login Successful');	
 				$loginData['uID'] = intval($u->getUserID());
+				$db = Loader::db();
+				/*updates the database for the failed login attempts of the particular user*/
+				$db->Execute('update PasswordHistory set attempts = ? where userID = ?', array(0,$loginData['uID']));
 				
 				Loader::library('password', 'password_policy');
 				$pkg = Package::getByHandle('password_policy');
