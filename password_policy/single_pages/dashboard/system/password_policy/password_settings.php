@@ -14,44 +14,44 @@ $form = Loader::helper('form');?>
 	<div class="ccm-pane-body">
 		<h3>Password Settings</h3>
 			<div class="clearfix">
-				<label for="password_history">Password Reset Interval Days</label>
+				<label for="password_history">Reuse time</label>
 				<div class="input">
-					<?php echo $form->text('password_reset_interval',$passwordResetInterval); ?>
+					<?php echo $form->text('password_reset_interval',$passwordResetInterval); ?><span> days</span> <div>The number of days before password can be reused</div>
 				</div>
 			</div>
 			<div class="clearfix">
-				<label for="password_age">Password Repeat Interval </label>
+				<label for="password_age">Repeat interval</label>
 				<div class="input">
-					<?php echo $form->text('password_repeat_interval',$passwordRepeatInterval); ?>
+					<?php echo $form->text('password_repeat_interval',$passwordRepeatInterval); ?><div>Number of times before an old password can be reused</div>
 				</div>
 			</div>
 			<div class="clearfix">
-				<label for="password_expiry_time">Password Expiry Time </label>
+				<label for="password_expiry_time">Expiry time</label>
 				<div class="input">
-					<?php echo $form->text('password_expiry_time',$passwordExpiryTime); ?>
+					<?php echo $form->text('password_expiry_time',$passwordExpiryTime); ?><span> days</span> <div>Maximum number of days for which password can be used</div>
 				</div>
 			</div>
 			<div class="clearfix">
-				<label for="password_login_attempt">Login Attempts </label>
+				<label for="password_login_attempt">Login attempts</label>
 				<div class="input">
-					<?php echo $form->text('password_login_attempt',$passwordLoginAttempt); ?>
+					<?php echo $form->text('password_login_attempt',$passwordLoginAttempt); ?><div>Number of times a user can attempt to use their password before their account is automatically locked</div>
 				</div>
 			</div>
 			<div class="clearfix">
-				<label for="password_length">Password Length</label>
+				<label for="password_length">Password length</label>
 				<div class="input">
-					<?php echo $form->text('password_length',$passwordLength); ?>
+					<?php echo $form->text('password_length',$passwordLength); ?><div>Minimum number of characters allowed in a password</div>
 				</div>
 			</div>
 			<h4>Password Complexity</h4>
 			<div class="clearfix">
-				<label for="min_uppercase">Minimum number of uppercase</label>
+				<label for="min_uppercase">Min no of uppercase</label>
 				<div class="input">
 					<?php echo $form->text('min_uppercase',$minUppercase); ?>
 				</div>
 			</div>
 			<div class="clearfix">
-				<label for="min_lowercase">Minimum number of Lowercase</label>
+				<label for="min_lowercase">Min no of lowercase</label>
 				<div class="input">
 					<?php echo $form->text('min_lowercase',$minLowercase); ?>
 				</div>
@@ -63,15 +63,15 @@ $form = Loader::helper('form');?>
 				</div>
 			</div>
 			<div class="clearfix">
-				<label for="min_non_alphanumeric">Minimum Number of non-alphanumeric characters except <br/>(> < " ' \ /)</label>
+				<label for="min_non_alphanumeric">Min no of non-alphanumeric</label>
 				<div class="input">
-					<?php echo $form->text('min_non_alphanumeric',$minNonAlphanumeric); ?>
+					<?php echo $form->text('min_non_alphanumeric',$minNonAlphanumeric); ?><div>Minimum number of non-alphanumeric characters except (> < " ' \ /)</div>
 				</div>
 			</div>
 			<div class="clearfix">
-				<label for="min_consecutive_characters">Maximum Number of consecutive characters from username allowed</label>
+				<label for="min_consecutive_characters">Consecutive username characters</label>
 				<div class="input">
-					<?php echo $form->text('min_consecutive_character',$minConsecutiveCharacter); ?>
+					<?php echo $form->text('min_consecutive_character',$minConsecutiveCharacter); ?><div>Maximum number of consecutive characters from username allowed</div>
 				</div>
 			</div>
 	</div>
