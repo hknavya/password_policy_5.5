@@ -133,7 +133,7 @@ class LoginController extends Controller {
 	}
 	
 	public function account_deactivated() {
-		$this->error->add(t('This user is inactive. Please contact us regarding this account.'));
+		$this->error->add(t('This user is inactive. Please contact the website administrator regarding this account.'));
 	}
 
 	public function do_login() { 
@@ -182,7 +182,7 @@ class LoginController extends Controller {
 							$ui = UserInfo::getByID($userID);
 							if(($count != NULL) && ($ui->isActive()!=0)){
 								if($count >$passwordLoginAttempt){
-									throw new Exception(t('This user is inactive. Please contact us regarding this account.'));
+									throw new Exception(t('This user is inactive. Please contact the website administrator regarding this account.'));
 									$count=0;
 									$ui = UserInfo::getByID($userID);
 									$ui->deactivate();
@@ -224,7 +224,7 @@ class LoginController extends Controller {
 						}
 						break;
 					case USER_INACTIVE:
-						throw new Exception(t('This user is inactive. Please contact us regarding this account.'));
+						throw new Exception(t('This user is inactive. Please contact the website administrator regarding this account.'));
 						break;
 				}
 			} else {
@@ -459,7 +459,7 @@ class LoginController extends Controller {
 		$db = Loader::db();
 		if($msgShow==true){
 			//intro message if the passwor dis expired
-		$this->set('intro_msg','Your password Period  has expired. Please reset it');
+		$this->set('intro_msg','Your password has expired, please reset it');
 		}
 		$h = Loader::helper('validation/identifier');
 		$e = Loader::helper('validation/error');
@@ -491,7 +491,7 @@ class LoginController extends Controller {
 						}
 						//validation for repeatation of password
 					if (in_array($encryptedPassword, $passwordList)) {
-						$e->add(t('The Password was already used by you .please enter diffrent password'));
+						$e->add(t('The password has already been used by you. Please enter a different password.'));
 					
 					}
 					
